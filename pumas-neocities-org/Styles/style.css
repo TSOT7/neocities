@@ -11,7 +11,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 85vh;
     flex-direction: column;
 }
 
@@ -19,7 +19,7 @@ html {
 #centered-nav {
     display: flex;
     color: white;
-    width: 50vw;
+    width: 40vw;
 }
 
 #nav-elements {
