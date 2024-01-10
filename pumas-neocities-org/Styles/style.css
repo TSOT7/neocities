@@ -1,5 +1,33 @@
 html {
-    background-color: #4C4C4C;
+    background-color: #000000;
+}
+
+@font-face {
+    font-family: gohu;
+    src: url(fonts/GohuFont11NerdFont-Regular.ttf);
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+
+#centered-nav {
+    display: flex;
+    color: white;
+    width: 50vw;
+}
+
+#nav-elements {
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+    font-family: gohu;
+    text-shadow: 2px 1px 10px;
 }
 
 
