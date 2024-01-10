@@ -30,6 +30,11 @@ html {
     text-shadow: 2px 1px 10px;
 }
 
+#nav-elements a {
+    text-decoration: none;
+    color: white;
+}
+
 
 
 
