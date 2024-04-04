@@ -1,25 +1,45 @@
 html {
     background-color: #000000;
+    padding: 10px 20px;
 }
+/* Global elements */
 
 @font-face {
     font-family: gohu;
     src: url(fonts/GohuFont11NerdFont-Regular.ttf);
 }
 
-#content {
+/* Main content div */
+
+#main {
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 85vh;
-    flex-direction: column;
+    border: 2px solid #FFF;
+    align-items: flex-start;
 }
 
+/* navbar divs */
+
+#headerbar {
+    display: flex;
+    border: 1px solid #FFF;
+    width: 100%;
+    height: 7.25%;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+#logo {
+    align-self: flex-start;
+}
+
+/* Elements of nav buttons */
 
 #centered-nav {
     display: flex;
     color: white;
-    width: 40vw;
+    width: 50%;
 }
 
 #nav-elements {
@@ -28,6 +48,7 @@ html {
     display: flex;
     font-family: gohu;
     text-shadow: 2px 1px 10px;
+    align-items: center;
 }
 
 #nav-elements a {
