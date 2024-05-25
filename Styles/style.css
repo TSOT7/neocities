@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+  }
+
+@font-face {
+    font-family: 'Jetbrains Mono';
+    src: url('Styles/fonts/JetBrainsMono-Regular.ttf');
+}
+
+body {
+    height: 100vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #1B263B;
+}
+
+#main {
+    font-family: Jetbrains Mono, monospace;
+    border: 10px gainsboro ridge;
+    background-color: #778DA9;
+    height: 35%;
+    width: 40%;
+}
+#dashed-line {
+    border-top: 2px dashed white;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#main h1 {
+    text-align: center;
+    font-weight: bolder;
+    color: #E0E1DD;
+}
+
+#main p {
+    color: #E0E1DD;
+    text-align: center;
+}
+
+#horizontal-list {
+    display: flex;
+    text-decoration: none;
+    justify-content: space-evenly;
+    list-style-type: square;
+}
+
+#horizontal-list a {
+    display: inline-block;
+}
