@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+}
+
+.navbar {
+    background-color: #3C474B;
+}
+
+#menu-elements {
+    display: flex;
+}
+
