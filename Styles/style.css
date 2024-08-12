@@ -1,3 +1,12 @@
+/* reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
 * {
     box-sizing: border-box;
   }
@@ -5,6 +14,11 @@
 @font-face {
     font-family: 'Jetbrains Mono';
     src: url('Styles/fonts/JetBrainsMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('Styles/fonts/NotoSans-VariableFont_wdth,wght.ttf');
 }
 /* CRT animation */
 .crt::before {
@@ -87,7 +101,7 @@
     }
   }
   
-  .crt::after {
+.crt::after {
     content: " ";
     display: block;
     position: absolute;
@@ -169,14 +183,17 @@
       text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
     }
   }
-  .crt {
-    animation: textShadow 1.6s infinite;
-  }
+ .crt {
+     animation: textShadow 1.6s infinite;
+ }
 
 /* Elements */
 body {
-    animation-name: flicker;
     background-color: #6200B3;
+}
+
+.container {
+  max-width: 1200px;
 }
 
 #ascii {
@@ -186,9 +203,17 @@ body {
     background-color: #3B0086;
 }
 
+#ascii-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 #bar {
     margin: 20px;
     background-color: #3B0086;
+    font-family: noto sans;
 }
 
 #bar ul {
@@ -201,7 +226,7 @@ body {
 }
 
 #main h2 {
-    color: #E2CFEA
+    color: #E2CFEA;
 }
 
 /* removing link decor */
