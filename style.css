@@ -1,12 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
 .header {
     display: flex;
+    padding: 10px;
+    justify-content: space-around;
 }
 
 .navbar {
     background-color: #3C474B;
+    padding: 5px;
 }
 
 #menu-elements {
     display: flex;
 }
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 4 / 4 / 6; }
+    .div2 { grid-area: 4 / 4 / 7 / 6; }
+    .div3 { grid-area: 1 / 1 / 7 / 4; }
+    
 
