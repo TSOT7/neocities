@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: JetBrainsMono, Helvetica, sans-serif;
+    color: black;
  
   }
 @font-face {
@@ -11,15 +12,20 @@
 }
 
 body {
-    background-image: url("/images/gingham-baby-blue.jpg");
-    background-repeat: repeat;
+    background-image: url("images/graph_paper.png");
     background-size: auto;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .header {
     display: flex;
     padding: 10px;
     justify-content: space-around;
+ 
 }
 
 .navbar {
@@ -29,6 +35,8 @@ body {
 #menu-elements {
     display: flex;
     list-style-type: none;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 
 #ascii {
@@ -50,5 +58,6 @@ body {
     
 .div1, .div2, .div3 {
     padding: 50px;
+    border: 3px solid;
+    background-color: mintcream;
 }  
-
