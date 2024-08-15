@@ -1,6 +1,11 @@
+.box-parent {
+    display: flex;
+    justify-content: center;
+}
+
 .rotating-box {
     width: 300px;
-    height: 100px;
+    height: 75px;
     background-color: lightblue;
     color: darkblue;
     display: flex;
@@ -11,8 +16,7 @@
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    transform-style: preserve-3d; /* Enable 3D transformations */
-    animation: rotate 10s infinite linear, moveUpDown 5s infinite alternate; /* Apply the rotation and vertical movement animations */
+    animation: moveUpDown 1s infinite alternate; /* Apply the rotation and vertical movement animations */
 }
 
 /* Keyframes for rotating the box */
@@ -31,6 +35,6 @@
         transform: translateY(0);
     }
     to {
-        transform: translateY(50px); /* Adjust the vertical movement range */
+        transform: translateY(10px); /* Adjust the vertical movement range */
     }
 }
