@@ -1,0 +1,40 @@
+.box-parent {
+    display: flex;
+    justify-content: center;
+}
+
+.rotating-box {
+    width: 300px;
+    height: 75px;
+    background-color: lightblue;
+    color: darkblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    animation: moveUpDown 1s infinite alternate; /* Apply the rotation and vertical movement animations */
+}
+
+/* Keyframes for rotating the box */
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Keyframes for vertical movement */
+@keyframes moveUpDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(10px); /* Adjust the vertical movement range */
+    }
+}
