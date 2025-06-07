@@ -5,24 +5,27 @@
   padding: 0;
 }
 
+.courier-prime-regular {
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 :root {
   --bg:   #191724;   /* deep purplish-black */
   --fg:   #fccfc6;   /* rose outline pink */
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: monospace;
+  --size: 300px; /* width & height of your square */
+  --link-color:    #FF8C42;  /* or #FFA500 */
+  --link-hover:    #EAE7DE;  /* light text on hover */
 }
 
 #ascii-text {
     border: 5px #000 ridge;
-
 }
 
 #terminal {
-      background: #000;
+      background: #00000005;
       color: #0f0;
       font-family: monospace;
       padding: 1rem;
@@ -32,18 +35,6 @@ body {
       border: 5px ridge #000;
     }
 
-.line { white-space: pre; }
-    .prompt::before { content: "$ "; }
-    .caret {
-      display: inline-block;
-      width: 8px;
-      background: #0f0;
-      animation: blink 1s step-end infinite;
-      vertical-align: bottom;
-    }
-    @keyframes blink {
-      50% { background: transparent; }
-    }
 
 
 .vertical-bar ul{
@@ -59,4 +50,122 @@ body {
     text-decoration: none;
     color: inherit;
   }
+
+/* 1. Make the body a flex container that stacks children vertically and centers them */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centers horizontally */
+  /* justify-content: center;  centers vertically if you also want that */
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: "courier prime";
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  background-color: var(--link-color);
+  padding: 0 2px;        /* optional little highlight */
+  border-radius: 2px;    /* optional rounding */
+}
+
+
+/* 2. Give each “row” a max-width so it doesn’t stretch edge-to-edge */
+.header,
+.vertical-bar,
+.ascii-container,
+#quote,
+#changelog {
+  width: 100%;
+  max-width: 800px;   /* or whatever max you like */
+  margin: 1rem 0;     /* vertical spacing between sections */
+}
+
+.ascii-container {
+  width: var(--size);
+  height: var(--size);
+  border: 5px ridge #000;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  
+  box-sizing: border-box;
+}
+
+#ascii-animation {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier Prime', monospace;
+  line-height: 1;                 /* no extra leading */
+  white-space: pre;               /* honor spaces & line breaks */
+  text-align: center;             /* center small ASCII art */
+}
+
+/* 3. Reset the UL and center its items with flexbox */
+.vertical-bar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 4. Add some spacing between your “links” */
+.vertical-bar ul li {
+  margin: 0 1rem;
+}
+
+.vertical-bar,
+#quote {
+  text-align: center;
+}
+
+#changelog {
+  border: 5px ridge #000;
+  padding: 1rem;
+}
+
+#ascii-text pre {
+  margin: 0;
+  /* 2) Add equal padding on all sides */
+  padding: 1rem;      /* or whatever value you like */
+  box-sizing: border-box;
+
+  /* make the lines hug the glyphs as tightly as possible */
+  line-height: 1;
+  font-family: monospace;
+}
+
+/* === CRT Scanlines === */
+body::before { 
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  pointer-events: none;       /* let clicks pass through */
+  z-index: 9999;              /* on top of everything */
+  
+  /* a repeating horizontal stripe gradient */
+  background: linear-gradient(
+    rgba(20,20,20,0) 66%,
+    rgba(0,0,0,0.2)  33%
+  );
+  background-size: 100% 3px;  /* 3px tall stripes */
+  
+  /* animate it sliding down to mimic scanlines flicker */
+  animation: scanlines-anim 0.7s linear infinite;
+}
+
+@keyframes scanlines-anim {
+  from { background-position: 0 0; }
+  to   { background-position: 0 9px; }
+}
 
