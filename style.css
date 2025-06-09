@@ -1,4 +1,4 @@
-/* reset*/
+/* reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,93 +11,64 @@
   font-style: normal;
 }
 
-
 :root {
-  --bg:   #191724;   /* deep purplish-black */
-  --fg:   #fccfc6;   /* rose outline pink */
-  --size: 300px; /* width & height of your square */
-  --link-color:    #FF8C42;  /* or #FFA500 */
-  --link-hover:    #EAE7DE;  /* light text on hover */
+  --bg:            #191724;   /* deep purplish-black */
+  --fg:            #fccfc6;   /* rose outline pink */
+  --ascii-size:    clamp(200px, 50vw, 300px);
+  --link-color:    #FF8C42;
+  --link-hover:    #EAE7DE;
+
+  /* ─── number of characters in your longest header line ─── */
+  --ascii-cols:    60;
 }
 
-#ascii-text {
-    border: 5px #000 ridge;
-}
-
-#terminal {
-      background: #00000005;
-      color: #0f0;
-      font-family: monospace;
-      padding: 1rem;
-      width: 90%;
-      max-width: 400px;
-      margin: 2rem auto;
-      border: 5px ridge #000;
-    }
-
-
-
-.vertical-bar ul{
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.vertical-bar ul li a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-/* 1. Make the body a flex container that stacks children vertically and centers them */
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;    /* centers horizontally */
-  /* justify-content: center;  centers vertically if you also want that */
+  align-items: center;
   margin: 0;
   padding: 0;
   background-color: var(--bg);
   color: var(--fg);
   font-family: "courier prime";
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+p, li {
+  line-height: 1.4;
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
 }
-
 a:hover,
 a:focus {
   color: var(--link-hover);
   background-color: var(--link-color);
-  padding: 0 2px;        /* optional little highlight */
-  border-radius: 2px;    /* optional rounding */
+  padding: 0 2px;
+  border-radius: 2px;
 }
 
-
-/* 2. Give each “row” a max-width so it doesn’t stretch edge-to-edge */
 .header,
 .vertical-bar,
 .ascii-container,
 #quote,
 #changelog {
   width: 100%;
-  max-width: 800px;   /* or whatever max you like */
-  margin: 1rem 0;     /* vertical spacing between sections */
+  max-width: 800px;
+  margin: 1rem 0;
 }
 
 .ascii-container {
-  width: var(--size);
-  height: var(--size);
+  width: var(--ascii-size);
+  aspect-ratio: 1/1;
   border: 5px ridge #000;
   display: flex;
   padding: 1rem;
   align-items: center;
   justify-content: center;
-  overflow: hidden;  
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -105,23 +76,26 @@ a:focus {
   margin: 0;
   padding: 0;
   font-family: 'Courier Prime', monospace;
-  line-height: 1;                 /* no extra leading */
-  white-space: pre;               /* honor spaces & line breaks */
-  text-align: center;             /* center small ASCII art */
+  line-height: 1;
+  white-space: pre;
+  text-align: center;
 }
 
-/* 3. Reset the UL and center its items with flexbox */
 .vertical-bar ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-/* 4. Add some spacing between your “links” */
 .vertical-bar ul li {
   margin: 0 1rem;
+}
+.vertical-bar ul li a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .vertical-bar,
@@ -134,38 +108,85 @@ a:focus {
   padding: 1rem;
 }
 
+/* preserve your old pre-styles */
 #ascii-text pre {
   margin: 0;
-  /* 2) Add equal padding on all sides */
-  padding: 1rem;      /* or whatever value you like */
+  padding: 1rem;
   box-sizing: border-box;
-
-  /* make the lines hug the glyphs as tightly as possible */
   line-height: 1;
   font-family: monospace;
 }
 
-/* === CRT Scanlines === */
-body::before { 
+/* Narrow phones: under 480px */
+@media (max-width: 480px) {
+  body {
+    padding: 0 1rem;
+  }
+  .header,
+  .vertical-bar,
+  #quote,
+  #changelog {
+    margin: 0.5rem 0;
+    max-width: 100%;
+  }
+  .vertical-bar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .ascii-container {
+    width: 80vw;
+  }
+}
+
+/* Tablets: under 768px */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1.5rem, 8vw, 2.75rem);
+  }
+  h2 {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+  }
+}
+
+/* CRT Scanlines */
+body::before {
   content: "";
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  pointer-events: none;       /* let clicks pass through */
-  z-index: 9999;              /* on top of everything */
-  
-  /* a repeating horizontal stripe gradient */
+  pointer-events: none;
+  z-index: 9999;
   background: linear-gradient(
     rgba(20,20,20,0) 66%,
     rgba(0,0,0,0.2)  33%
   );
-  background-size: 100% 3px;  /* 3px tall stripes */
-  
-  /* animate it sliding down to mimic scanlines flicker */
+  background-size: 100% 3px;
   animation: scanlines-anim 0.7s linear infinite;
 }
-
 @keyframes scanlines-anim {
   from { background-position: 0 0; }
   to   { background-position: 0 9px; }
 }
 
+/* ──────── FIXED HEADER ASCII ──────── */
+#ascii-text {
+  width: 100%;
+  overflow: hidden;      /* no scrollbar, no clipping later */
+  border: 5px ridge #000;
+}
+
+#ascii-text pre {
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: 'Courier Prime', monospace;
+  line-height: 1;
+  white-space: pre;
+  text-align: center;
+
+  /* ALWAYS shrink to fit, but never exceed 1rem, never go below .25rem */
+  font-size: clamp(
+    0.25rem,
+    calc((100vw - 2rem) / var(--ascii-cols)),
+    1rem
+  );
+}
